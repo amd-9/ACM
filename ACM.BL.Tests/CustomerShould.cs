@@ -81,5 +81,42 @@ namespace ACM.BL.Tests
             //-- Assert
             Assert.Equal(3, Customer.InstanceCount);
         }
+
+        [Fact]
+        public void ValidateValidCustomer()
+        {
+            //-- Arrange
+            var customer = new Customer
+            {
+                LastName = "Baggins",
+                EmailAddress = "fbaggins@hobbiton.me"
+            };
+
+            var expected = true;
+
+            //-- Act
+            var actual = customer.Validate();
+
+            //-- Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ValidateIvalidCustomer()
+        {
+            //-- Arrange
+            var customer = new Customer
+            {
+                EmailAddress = "fbaggins@hobbiton.me"
+            };
+
+            var expected = false;
+
+            //-- Act
+            var actual = customer.Validate();
+
+            //-- Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
