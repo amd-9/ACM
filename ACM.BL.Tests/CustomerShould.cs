@@ -3,10 +3,10 @@ using Xunit;
 
 namespace ACM.BL.Tests
 {
-    public class CustomerTest
+    public class CustomerShould
     {
         [Fact]
-        public void FullNameTestValid()
+        public void ReturnFullName()
         {
             //-- Arrange
             Customer customer = new Customer
@@ -25,7 +25,7 @@ namespace ACM.BL.Tests
         }
 
         [Fact]
-        public void FullNameFirstNameEmpty()
+        public void ReturnFullNameWithFirstNameEmpty()
         {
             //-- Arrange
             Customer customer = new Customer
@@ -43,7 +43,7 @@ namespace ACM.BL.Tests
         }
 
         [Fact]
-        public void FullNameLastNameEmpty()
+        public void ReturnFullNameWithLastNameEmpty()
         {
             //-- Arrange
             Customer customer = new Customer
@@ -61,7 +61,7 @@ namespace ACM.BL.Tests
         }
 
         [Fact]
-        public void StaticTest()
+        public void PassStaticTest()
         {
             //-- Arrange
             var c1 = new Customer();
