@@ -29,9 +29,30 @@ namespace ACM.BL
         /// </summary>
         /// <param name="customer"></param>
         /// <returns></returns>
-        public bool Save(Order customer)
+        public bool Save(Order order)
         {
-            return true;
+            var success = true;
+
+            if (order.HasChanges)
+            {
+                if (order.IsValid)
+                {
+                    if (order.IsNew)
+                    {
+                        // Call an Insert Stored Procedure
+                    }
+                    else
+                    {
+                        // Call an Update Stored Procedure
+                    }
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+
+            return success;
         }
     }
 }

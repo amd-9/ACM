@@ -28,5 +28,45 @@ namespace ACM.BL.Tests
             Assert.Equal(expected.ProductDescription, actual.ProductDescription);
             Assert.Equal(expected.CurrentPrice, actual.CurrentPrice);
         }
+
+        [Fact]
+        public void SaveValidProduct()
+        {
+            //-- Arrange
+            var productRepository = new ProductRepository();
+            var updateProduct = new Product(2)
+            {
+                CurrentPrice = 18M,
+                ProductDescription =  "Very tasty hot dogs",
+                ProductName = "Hot dogs",
+                HasChanges = true
+                 
+            };
+            //-- Act
+            var actual = productRepository.Save(updateProduct);
+
+            //-- Assert
+            Assert.True(actual);
+        }
+
+        [Fact]
+        public void DoNotSaveInvalidProduct()
+        {
+            //-- Arrange
+            var productRepository = new ProductRepository();
+            var updateProduct = new Product(2)
+            {
+                CurrentPrice = null,
+                ProductDescription = "Very tasty hot dogs",
+                ProductName = "Hot dogs",
+                HasChanges = true
+
+            };
+            //-- Act
+            var actual = productRepository.Save(updateProduct);
+
+            //-- Assert
+            Assert.False(actual);
+        }
     }
 }
