@@ -6,7 +6,7 @@ using Acme.Common;
 
 namespace ACM.BL
 {
-    public class Product: EntityBase
+    public class Product: EntityBase, ILoggable
     {
         public Product()
         {
@@ -34,6 +34,7 @@ namespace ACM.BL
         public decimal? CurrentPrice { get; set; }
 
         public override string ToString() => ProductName;
+        public string Log() => $"{ProductId}: {ProductName} Detail: {ProductDescription} Status: {EntityState.ToString()}";
 
         /// <summary>
         /// Validates the product data
